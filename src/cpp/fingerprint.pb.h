@@ -54,15 +54,15 @@ struct TableStruct_fingerprint_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_fingerprint_2eproto;
 namespace fingerprint {
-class CheckDuplicateResponse;
-class CheckDuplicateResponseDefaultTypeInternal;
-extern CheckDuplicateResponseDefaultTypeInternal _CheckDuplicateResponse_default_instance_;
 class EnrolledFMD;
 class EnrolledFMDDefaultTypeInternal;
 extern EnrolledFMDDefaultTypeInternal _EnrolledFMD_default_instance_;
 class EnrollmentRequest;
 class EnrollmentRequestDefaultTypeInternal;
 extern EnrollmentRequestDefaultTypeInternal _EnrollmentRequest_default_instance_;
+class FmdCandidates;
+class FmdCandidatesDefaultTypeInternal;
+extern FmdCandidatesDefaultTypeInternal _FmdCandidates_default_instance_;
 class PreEnrolledFMD;
 class PreEnrolledFMDDefaultTypeInternal;
 extern PreEnrolledFMDDefaultTypeInternal _PreEnrolledFMD_default_instance_;
@@ -74,9 +74,9 @@ class VerificationResponseDefaultTypeInternal;
 extern VerificationResponseDefaultTypeInternal _VerificationResponse_default_instance_;
 }  // namespace fingerprint
 PROTOBUF_NAMESPACE_OPEN
-template<> ::fingerprint::CheckDuplicateResponse* Arena::CreateMaybeMessage<::fingerprint::CheckDuplicateResponse>(Arena*);
 template<> ::fingerprint::EnrolledFMD* Arena::CreateMaybeMessage<::fingerprint::EnrolledFMD>(Arena*);
 template<> ::fingerprint::EnrollmentRequest* Arena::CreateMaybeMessage<::fingerprint::EnrollmentRequest>(Arena*);
+template<> ::fingerprint::FmdCandidates* Arena::CreateMaybeMessage<::fingerprint::FmdCandidates>(Arena*);
 template<> ::fingerprint::PreEnrolledFMD* Arena::CreateMaybeMessage<::fingerprint::PreEnrolledFMD>(Arena*);
 template<> ::fingerprint::VerificationRequest* Arena::CreateMaybeMessage<::fingerprint::VerificationRequest>(Arena*);
 template<> ::fingerprint::VerificationResponse* Arena::CreateMaybeMessage<::fingerprint::VerificationResponse>(Arena*);
@@ -371,6 +371,149 @@ class EnrolledFMD PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
+class FmdCandidates PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:fingerprint.FmdCandidates) */ {
+ public:
+  inline FmdCandidates() : FmdCandidates(nullptr) {}
+  virtual ~FmdCandidates();
+
+  FmdCandidates(const FmdCandidates& from);
+  FmdCandidates(FmdCandidates&& from) noexcept
+    : FmdCandidates() {
+    *this = ::std::move(from);
+  }
+
+  inline FmdCandidates& operator=(const FmdCandidates& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline FmdCandidates& operator=(FmdCandidates&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const FmdCandidates& default_instance();
+
+  static inline const FmdCandidates* internal_default_instance() {
+    return reinterpret_cast<const FmdCandidates*>(
+               &_FmdCandidates_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(FmdCandidates& a, FmdCandidates& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(FmdCandidates* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(FmdCandidates* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FmdCandidates* New() const final {
+    return CreateMaybeMessage<FmdCandidates>(nullptr);
+  }
+
+  FmdCandidates* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<FmdCandidates>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const FmdCandidates& from);
+  void MergeFrom(const FmdCandidates& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FmdCandidates* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "fingerprint.FmdCandidates";
+  }
+  protected:
+  explicit FmdCandidates(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_fingerprint_2eproto);
+    return ::descriptor_table_fingerprint_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBase64EnrolledFMDFieldNumber = 1,
+  };
+  // string base64EnrolledFMD = 1;
+  void clear_base64enrolledfmd();
+  const std::string& base64enrolledfmd() const;
+  void set_base64enrolledfmd(const std::string& value);
+  void set_base64enrolledfmd(std::string&& value);
+  void set_base64enrolledfmd(const char* value);
+  void set_base64enrolledfmd(const char* value, size_t size);
+  std::string* mutable_base64enrolledfmd();
+  std::string* release_base64enrolledfmd();
+  void set_allocated_base64enrolledfmd(std::string* base64enrolledfmd);
+  private:
+  const std::string& _internal_base64enrolledfmd() const;
+  void _internal_set_base64enrolledfmd(const std::string& value);
+  std::string* _internal_mutable_base64enrolledfmd();
+  public:
+
+  // @@protoc_insertion_point(class_scope:fingerprint.FmdCandidates)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr base64enrolledfmd_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_fingerprint_2eproto;
+};
+// -------------------------------------------------------------------
+
 class EnrollmentRequest PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:fingerprint.EnrollmentRequest) */ {
  public:
@@ -412,7 +555,7 @@ class EnrollmentRequest PROTOBUF_FINAL :
                &_EnrollmentRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(EnrollmentRequest& a, EnrollmentRequest& b) {
     a.Swap(&b);
@@ -557,7 +700,7 @@ class VerificationRequest PROTOBUF_FINAL :
                &_VerificationRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(VerificationRequest& a, VerificationRequest& b) {
     a.Swap(&b);
@@ -630,23 +773,24 @@ class VerificationRequest PROTOBUF_FINAL :
   enum : int {
     kFmdCandidatesFieldNumber = 2,
     kTargetFMDFieldNumber = 1,
+    kDataFormatFieldNumber = 3,
   };
-  // repeated .fingerprint.EnrolledFMD fmdCandidates = 2;
+  // repeated .fingerprint.FmdCandidates fmdCandidates = 2;
   int fmdcandidates_size() const;
   private:
   int _internal_fmdcandidates_size() const;
   public:
   void clear_fmdcandidates();
-  ::fingerprint::EnrolledFMD* mutable_fmdcandidates(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::EnrolledFMD >*
+  ::fingerprint::FmdCandidates* mutable_fmdcandidates(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::FmdCandidates >*
       mutable_fmdcandidates();
   private:
-  const ::fingerprint::EnrolledFMD& _internal_fmdcandidates(int index) const;
-  ::fingerprint::EnrolledFMD* _internal_add_fmdcandidates();
+  const ::fingerprint::FmdCandidates& _internal_fmdcandidates(int index) const;
+  ::fingerprint::FmdCandidates* _internal_add_fmdcandidates();
   public:
-  const ::fingerprint::EnrolledFMD& fmdcandidates(int index) const;
-  ::fingerprint::EnrolledFMD* add_fmdcandidates();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::EnrolledFMD >&
+  const ::fingerprint::FmdCandidates& fmdcandidates(int index) const;
+  ::fingerprint::FmdCandidates* add_fmdcandidates();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::FmdCandidates >&
       fmdcandidates() const;
 
   // .fingerprint.PreEnrolledFMD targetFMD = 1;
@@ -667,6 +811,15 @@ class VerificationRequest PROTOBUF_FINAL :
       ::fingerprint::PreEnrolledFMD* targetfmd);
   ::fingerprint::PreEnrolledFMD* unsafe_arena_release_targetfmd();
 
+  // uint32 dataFormat = 3;
+  void clear_dataformat();
+  ::PROTOBUF_NAMESPACE_ID::uint32 dataformat() const;
+  void set_dataformat(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_dataformat() const;
+  void _internal_set_dataformat(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:fingerprint.VerificationRequest)
  private:
   class _Internal;
@@ -674,8 +827,9 @@ class VerificationRequest PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::EnrolledFMD > fmdcandidates_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::FmdCandidates > fmdcandidates_;
   ::fingerprint::PreEnrolledFMD* targetfmd_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 dataformat_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_fingerprint_2eproto;
 };
@@ -722,7 +876,7 @@ class VerificationResponse PROTOBUF_FINAL :
                &_VerificationResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(VerificationResponse& a, VerificationResponse& b) {
     a.Swap(&b);
@@ -794,6 +948,7 @@ class VerificationResponse PROTOBUF_FINAL :
 
   enum : int {
     kMatchFieldNumber = 1,
+    kFmdIdxFieldNumber = 2,
   };
   // bool match = 1;
   void clear_match();
@@ -804,6 +959,15 @@ class VerificationResponse PROTOBUF_FINAL :
   void _internal_set_match(bool value);
   public:
 
+  // int32 fmdIdx = 2;
+  void clear_fmdidx();
+  ::PROTOBUF_NAMESPACE_ID::int32 fmdidx() const;
+  void set_fmdidx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_fmdidx() const;
+  void _internal_set_fmdidx(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:fingerprint.VerificationResponse)
  private:
   class _Internal;
@@ -812,142 +976,7 @@ class VerificationResponse PROTOBUF_FINAL :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   bool match_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_fingerprint_2eproto;
-};
-// -------------------------------------------------------------------
-
-class CheckDuplicateResponse PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:fingerprint.CheckDuplicateResponse) */ {
- public:
-  inline CheckDuplicateResponse() : CheckDuplicateResponse(nullptr) {}
-  virtual ~CheckDuplicateResponse();
-
-  CheckDuplicateResponse(const CheckDuplicateResponse& from);
-  CheckDuplicateResponse(CheckDuplicateResponse&& from) noexcept
-    : CheckDuplicateResponse() {
-    *this = ::std::move(from);
-  }
-
-  inline CheckDuplicateResponse& operator=(const CheckDuplicateResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline CheckDuplicateResponse& operator=(CheckDuplicateResponse&& from) noexcept {
-    if (GetArena() == from.GetArena()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return GetMetadataStatic().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return GetMetadataStatic().reflection;
-  }
-  static const CheckDuplicateResponse& default_instance();
-
-  static inline const CheckDuplicateResponse* internal_default_instance() {
-    return reinterpret_cast<const CheckDuplicateResponse*>(
-               &_CheckDuplicateResponse_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    5;
-
-  friend void swap(CheckDuplicateResponse& a, CheckDuplicateResponse& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(CheckDuplicateResponse* other) {
-    if (other == this) return;
-    if (GetArena() == other->GetArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(CheckDuplicateResponse* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline CheckDuplicateResponse* New() const final {
-    return CreateMaybeMessage<CheckDuplicateResponse>(nullptr);
-  }
-
-  CheckDuplicateResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<CheckDuplicateResponse>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const CheckDuplicateResponse& from);
-  void MergeFrom(const CheckDuplicateResponse& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  inline void SharedCtor();
-  inline void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(CheckDuplicateResponse* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "fingerprint.CheckDuplicateResponse";
-  }
-  protected:
-  explicit CheckDuplicateResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-  private:
-  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
-    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_fingerprint_2eproto);
-    return ::descriptor_table_fingerprint_2eproto.file_level_metadata[kIndexInFileMessages];
-  }
-
-  public:
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kIsDuplicateFieldNumber = 1,
-  };
-  // bool isDuplicate = 1;
-  void clear_isduplicate();
-  bool isduplicate() const;
-  void set_isduplicate(bool value);
-  private:
-  bool _internal_isduplicate() const;
-  void _internal_set_isduplicate(bool value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:fingerprint.CheckDuplicateResponse)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  bool isduplicate_;
+  ::PROTOBUF_NAMESPACE_ID::int32 fmdidx_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_fingerprint_2eproto;
 };
@@ -1090,6 +1119,71 @@ inline void EnrolledFMD::set_allocated_base64enrolledfmd(std::string* base64enro
 
 // -------------------------------------------------------------------
 
+// FmdCandidates
+
+// string base64EnrolledFMD = 1;
+inline void FmdCandidates::clear_base64enrolledfmd() {
+  base64enrolledfmd_.ClearToEmpty();
+}
+inline const std::string& FmdCandidates::base64enrolledfmd() const {
+  // @@protoc_insertion_point(field_get:fingerprint.FmdCandidates.base64EnrolledFMD)
+  return _internal_base64enrolledfmd();
+}
+inline void FmdCandidates::set_base64enrolledfmd(const std::string& value) {
+  _internal_set_base64enrolledfmd(value);
+  // @@protoc_insertion_point(field_set:fingerprint.FmdCandidates.base64EnrolledFMD)
+}
+inline std::string* FmdCandidates::mutable_base64enrolledfmd() {
+  // @@protoc_insertion_point(field_mutable:fingerprint.FmdCandidates.base64EnrolledFMD)
+  return _internal_mutable_base64enrolledfmd();
+}
+inline const std::string& FmdCandidates::_internal_base64enrolledfmd() const {
+  return base64enrolledfmd_.Get();
+}
+inline void FmdCandidates::_internal_set_base64enrolledfmd(const std::string& value) {
+  
+  base64enrolledfmd_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void FmdCandidates::set_base64enrolledfmd(std::string&& value) {
+  
+  base64enrolledfmd_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:fingerprint.FmdCandidates.base64EnrolledFMD)
+}
+inline void FmdCandidates::set_base64enrolledfmd(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  base64enrolledfmd_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:fingerprint.FmdCandidates.base64EnrolledFMD)
+}
+inline void FmdCandidates::set_base64enrolledfmd(const char* value,
+    size_t size) {
+  
+  base64enrolledfmd_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:fingerprint.FmdCandidates.base64EnrolledFMD)
+}
+inline std::string* FmdCandidates::_internal_mutable_base64enrolledfmd() {
+  
+  return base64enrolledfmd_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* FmdCandidates::release_base64enrolledfmd() {
+  // @@protoc_insertion_point(field_release:fingerprint.FmdCandidates.base64EnrolledFMD)
+  return base64enrolledfmd_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void FmdCandidates::set_allocated_base64enrolledfmd(std::string* base64enrolledfmd) {
+  if (base64enrolledfmd != nullptr) {
+    
+  } else {
+    
+  }
+  base64enrolledfmd_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), base64enrolledfmd,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:fingerprint.FmdCandidates.base64EnrolledFMD)
+}
+
+// -------------------------------------------------------------------
+
 // EnrollmentRequest
 
 // repeated .fingerprint.PreEnrolledFMD fmdCandidates = 1;
@@ -1218,7 +1312,7 @@ inline void VerificationRequest::set_allocated_targetfmd(::fingerprint::PreEnrol
   // @@protoc_insertion_point(field_set_allocated:fingerprint.VerificationRequest.targetFMD)
 }
 
-// repeated .fingerprint.EnrolledFMD fmdCandidates = 2;
+// repeated .fingerprint.FmdCandidates fmdCandidates = 2;
 inline int VerificationRequest::_internal_fmdcandidates_size() const {
   return fmdcandidates_.size();
 }
@@ -1228,33 +1322,53 @@ inline int VerificationRequest::fmdcandidates_size() const {
 inline void VerificationRequest::clear_fmdcandidates() {
   fmdcandidates_.Clear();
 }
-inline ::fingerprint::EnrolledFMD* VerificationRequest::mutable_fmdcandidates(int index) {
+inline ::fingerprint::FmdCandidates* VerificationRequest::mutable_fmdcandidates(int index) {
   // @@protoc_insertion_point(field_mutable:fingerprint.VerificationRequest.fmdCandidates)
   return fmdcandidates_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::EnrolledFMD >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::FmdCandidates >*
 VerificationRequest::mutable_fmdcandidates() {
   // @@protoc_insertion_point(field_mutable_list:fingerprint.VerificationRequest.fmdCandidates)
   return &fmdcandidates_;
 }
-inline const ::fingerprint::EnrolledFMD& VerificationRequest::_internal_fmdcandidates(int index) const {
+inline const ::fingerprint::FmdCandidates& VerificationRequest::_internal_fmdcandidates(int index) const {
   return fmdcandidates_.Get(index);
 }
-inline const ::fingerprint::EnrolledFMD& VerificationRequest::fmdcandidates(int index) const {
+inline const ::fingerprint::FmdCandidates& VerificationRequest::fmdcandidates(int index) const {
   // @@protoc_insertion_point(field_get:fingerprint.VerificationRequest.fmdCandidates)
   return _internal_fmdcandidates(index);
 }
-inline ::fingerprint::EnrolledFMD* VerificationRequest::_internal_add_fmdcandidates() {
+inline ::fingerprint::FmdCandidates* VerificationRequest::_internal_add_fmdcandidates() {
   return fmdcandidates_.Add();
 }
-inline ::fingerprint::EnrolledFMD* VerificationRequest::add_fmdcandidates() {
+inline ::fingerprint::FmdCandidates* VerificationRequest::add_fmdcandidates() {
   // @@protoc_insertion_point(field_add:fingerprint.VerificationRequest.fmdCandidates)
   return _internal_add_fmdcandidates();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::EnrolledFMD >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::fingerprint::FmdCandidates >&
 VerificationRequest::fmdcandidates() const {
   // @@protoc_insertion_point(field_list:fingerprint.VerificationRequest.fmdCandidates)
   return fmdcandidates_;
+}
+
+// uint32 dataFormat = 3;
+inline void VerificationRequest::clear_dataformat() {
+  dataformat_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 VerificationRequest::_internal_dataformat() const {
+  return dataformat_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 VerificationRequest::dataformat() const {
+  // @@protoc_insertion_point(field_get:fingerprint.VerificationRequest.dataFormat)
+  return _internal_dataformat();
+}
+inline void VerificationRequest::_internal_set_dataformat(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  dataformat_ = value;
+}
+inline void VerificationRequest::set_dataformat(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_dataformat(value);
+  // @@protoc_insertion_point(field_set:fingerprint.VerificationRequest.dataFormat)
 }
 
 // -------------------------------------------------------------------
@@ -1281,28 +1395,24 @@ inline void VerificationResponse::set_match(bool value) {
   // @@protoc_insertion_point(field_set:fingerprint.VerificationResponse.match)
 }
 
-// -------------------------------------------------------------------
-
-// CheckDuplicateResponse
-
-// bool isDuplicate = 1;
-inline void CheckDuplicateResponse::clear_isduplicate() {
-  isduplicate_ = false;
+// int32 fmdIdx = 2;
+inline void VerificationResponse::clear_fmdidx() {
+  fmdidx_ = 0;
 }
-inline bool CheckDuplicateResponse::_internal_isduplicate() const {
-  return isduplicate_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 VerificationResponse::_internal_fmdidx() const {
+  return fmdidx_;
 }
-inline bool CheckDuplicateResponse::isduplicate() const {
-  // @@protoc_insertion_point(field_get:fingerprint.CheckDuplicateResponse.isDuplicate)
-  return _internal_isduplicate();
+inline ::PROTOBUF_NAMESPACE_ID::int32 VerificationResponse::fmdidx() const {
+  // @@protoc_insertion_point(field_get:fingerprint.VerificationResponse.fmdIdx)
+  return _internal_fmdidx();
 }
-inline void CheckDuplicateResponse::_internal_set_isduplicate(bool value) {
+inline void VerificationResponse::_internal_set_fmdidx(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  isduplicate_ = value;
+  fmdidx_ = value;
 }
-inline void CheckDuplicateResponse::set_isduplicate(bool value) {
-  _internal_set_isduplicate(value);
-  // @@protoc_insertion_point(field_set:fingerprint.CheckDuplicateResponse.isDuplicate)
+inline void VerificationResponse::set_fmdidx(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_fmdidx(value);
+  // @@protoc_insertion_point(field_set:fingerprint.VerificationResponse.fmdIdx)
 }
 
 #ifdef __GNUC__

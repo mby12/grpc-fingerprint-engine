@@ -14,7 +14,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_fingerprint_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_EnrolledFMD_fingerprint_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_fingerprint_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_FmdCandidates_fingerprint_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_fingerprint_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PreEnrolledFMD_fingerprint_2eproto;
 namespace fingerprint {
 class PreEnrolledFMDDefaultTypeInternal {
@@ -25,6 +25,10 @@ class EnrolledFMDDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<EnrolledFMD> _instance;
 } _EnrolledFMD_default_instance_;
+class FmdCandidatesDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<FmdCandidates> _instance;
+} _FmdCandidates_default_instance_;
 class EnrollmentRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<EnrollmentRequest> _instance;
@@ -37,24 +41,7 @@ class VerificationResponseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<VerificationResponse> _instance;
 } _VerificationResponse_default_instance_;
-class CheckDuplicateResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CheckDuplicateResponse> _instance;
-} _CheckDuplicateResponse_default_instance_;
 }  // namespace fingerprint
-static void InitDefaultsscc_info_CheckDuplicateResponse_fingerprint_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::fingerprint::_CheckDuplicateResponse_default_instance_;
-    new (ptr) ::fingerprint::CheckDuplicateResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CheckDuplicateResponse_fingerprint_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CheckDuplicateResponse_fingerprint_2eproto}, {}};
-
 static void InitDefaultsscc_info_EnrolledFMD_fingerprint_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -82,6 +69,19 @@ static void InitDefaultsscc_info_EnrollmentRequest_fingerprint_2eproto() {
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_EnrollmentRequest_fingerprint_2eproto}, {
       &scc_info_PreEnrolledFMD_fingerprint_2eproto.base,}};
 
+static void InitDefaultsscc_info_FmdCandidates_fingerprint_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::fingerprint::_FmdCandidates_default_instance_;
+    new (ptr) ::fingerprint::FmdCandidates();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_FmdCandidates_fingerprint_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_FmdCandidates_fingerprint_2eproto}, {}};
+
 static void InitDefaultsscc_info_PreEnrolledFMD_fingerprint_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -108,7 +108,7 @@ static void InitDefaultsscc_info_VerificationRequest_fingerprint_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_VerificationRequest_fingerprint_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_VerificationRequest_fingerprint_2eproto}, {
       &scc_info_PreEnrolledFMD_fingerprint_2eproto.base,
-      &scc_info_EnrolledFMD_fingerprint_2eproto.base,}};
+      &scc_info_FmdCandidates_fingerprint_2eproto.base,}};
 
 static void InitDefaultsscc_info_VerificationResponse_fingerprint_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -141,6 +141,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_fingerprint_2eproto::offsets[]
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::fingerprint::EnrolledFMD, base64enrolledfmd_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::fingerprint::FmdCandidates, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::fingerprint::FmdCandidates, base64enrolledfmd_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::fingerprint::EnrollmentRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -153,70 +159,64 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_fingerprint_2eproto::offsets[]
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::fingerprint::VerificationRequest, targetfmd_),
   PROTOBUF_FIELD_OFFSET(::fingerprint::VerificationRequest, fmdcandidates_),
+  PROTOBUF_FIELD_OFFSET(::fingerprint::VerificationRequest, dataformat_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::fingerprint::VerificationResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::fingerprint::VerificationResponse, match_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::fingerprint::CheckDuplicateResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::fingerprint::CheckDuplicateResponse, isduplicate_),
+  PROTOBUF_FIELD_OFFSET(::fingerprint::VerificationResponse, fmdidx_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::fingerprint::PreEnrolledFMD)},
   { 6, -1, sizeof(::fingerprint::EnrolledFMD)},
-  { 12, -1, sizeof(::fingerprint::EnrollmentRequest)},
-  { 18, -1, sizeof(::fingerprint::VerificationRequest)},
-  { 25, -1, sizeof(::fingerprint::VerificationResponse)},
-  { 31, -1, sizeof(::fingerprint::CheckDuplicateResponse)},
+  { 12, -1, sizeof(::fingerprint::FmdCandidates)},
+  { 18, -1, sizeof(::fingerprint::EnrollmentRequest)},
+  { 24, -1, sizeof(::fingerprint::VerificationRequest)},
+  { 32, -1, sizeof(::fingerprint::VerificationResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fingerprint::_PreEnrolledFMD_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fingerprint::_EnrolledFMD_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fingerprint::_FmdCandidates_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fingerprint::_EnrollmentRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fingerprint::_VerificationRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fingerprint::_VerificationResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::fingerprint::_CheckDuplicateResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_fingerprint_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\021fingerprint.proto\022\013fingerprint\".\n\016PreE"
   "nrolledFMD\022\034\n\024base64PreEnrolledFMD\030\001 \001(\t"
   "\"(\n\013EnrolledFMD\022\031\n\021base64EnrolledFMD\030\001 \001"
-  "(\t\"G\n\021EnrollmentRequest\0222\n\rfmdCandidates"
-  "\030\001 \003(\0132\033.fingerprint.PreEnrolledFMD\"v\n\023V"
-  "erificationRequest\022.\n\ttargetFMD\030\001 \001(\0132\033."
-  "fingerprint.PreEnrolledFMD\022/\n\rfmdCandida"
-  "tes\030\002 \003(\0132\030.fingerprint.EnrolledFMD\"%\n\024V"
-  "erificationResponse\022\r\n\005match\030\001 \001(\010\"-\n\026Ch"
-  "eckDuplicateResponse\022\023\n\013isDuplicate\030\001 \001("
-  "\0102\223\002\n\013FingerPrint\022O\n\021EnrollFingerprint\022\036"
-  ".fingerprint.EnrollmentRequest\032\030.fingerp"
-  "rint.EnrolledFMD\"\000\022Z\n\021VerifyFingerprint\022"
-  " .fingerprint.VerificationRequest\032!.fing"
-  "erprint.VerificationResponse\"\000\022W\n\016CheckD"
-  "uplicate\022 .fingerprint.VerificationReque"
-  "st\032#.fingerprint.CheckDuplicateResponseb"
-  "\006proto3"
+  "(\t\"*\n\rFmdCandidates\022\031\n\021base64EnrolledFMD"
+  "\030\001 \001(\t\"G\n\021EnrollmentRequest\0222\n\rfmdCandid"
+  "ates\030\001 \003(\0132\033.fingerprint.PreEnrolledFMD\""
+  "\214\001\n\023VerificationRequest\022.\n\ttargetFMD\030\001 \001"
+  "(\0132\033.fingerprint.PreEnrolledFMD\0221\n\rfmdCa"
+  "ndidates\030\002 \003(\0132\032.fingerprint.FmdCandidat"
+  "es\022\022\n\ndataFormat\030\003 \001(\r\"5\n\024VerificationRe"
+  "sponse\022\r\n\005match\030\001 \001(\010\022\016\n\006fmdIdx\030\002 \001(\0052\272\001"
+  "\n\013FingerPrint\022O\n\021EnrollFingerprint\022\036.fin"
+  "gerprint.EnrollmentRequest\032\030.fingerprint"
+  ".EnrolledFMD\"\000\022Z\n\021VerifyFingerprint\022 .fi"
+  "ngerprint.VerificationRequest\032!.fingerpr"
+  "int.VerificationResponse\"\000b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_fingerprint_2eproto_deps[1] = {
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_fingerprint_2eproto_sccs[6] = {
-  &scc_info_CheckDuplicateResponse_fingerprint_2eproto.base,
   &scc_info_EnrolledFMD_fingerprint_2eproto.base,
   &scc_info_EnrollmentRequest_fingerprint_2eproto.base,
+  &scc_info_FmdCandidates_fingerprint_2eproto.base,
   &scc_info_PreEnrolledFMD_fingerprint_2eproto.base,
   &scc_info_VerificationRequest_fingerprint_2eproto.base,
   &scc_info_VerificationResponse_fingerprint_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_fingerprint_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_fingerprint_2eproto = {
-  false, false, descriptor_table_protodef_fingerprint_2eproto, "fingerprint.proto", 687,
+  false, false, descriptor_table_protodef_fingerprint_2eproto, "fingerprint.proto", 634,
   &descriptor_table_fingerprint_2eproto_once, descriptor_table_fingerprint_2eproto_sccs, descriptor_table_fingerprint_2eproto_deps, 6, 0,
   schemas, file_default_instances, TableStruct_fingerprint_2eproto::offsets,
   file_level_metadata_fingerprint_2eproto, 6, file_level_enum_descriptors_fingerprint_2eproto, file_level_service_descriptors_fingerprint_2eproto,
@@ -640,6 +640,212 @@ void EnrolledFMD::InternalSwap(EnrolledFMD* other) {
 
 // ===================================================================
 
+class FmdCandidates::_Internal {
+ public:
+};
+
+FmdCandidates::FmdCandidates(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:fingerprint.FmdCandidates)
+}
+FmdCandidates::FmdCandidates(const FmdCandidates& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  base64enrolledfmd_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_base64enrolledfmd().empty()) {
+    base64enrolledfmd_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_base64enrolledfmd(), 
+      GetArena());
+  }
+  // @@protoc_insertion_point(copy_constructor:fingerprint.FmdCandidates)
+}
+
+void FmdCandidates::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_FmdCandidates_fingerprint_2eproto.base);
+  base64enrolledfmd_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+FmdCandidates::~FmdCandidates() {
+  // @@protoc_insertion_point(destructor:fingerprint.FmdCandidates)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void FmdCandidates::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  base64enrolledfmd_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void FmdCandidates::ArenaDtor(void* object) {
+  FmdCandidates* _this = reinterpret_cast< FmdCandidates* >(object);
+  (void)_this;
+}
+void FmdCandidates::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void FmdCandidates::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const FmdCandidates& FmdCandidates::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_FmdCandidates_fingerprint_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void FmdCandidates::Clear() {
+// @@protoc_insertion_point(message_clear_start:fingerprint.FmdCandidates)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  base64enrolledfmd_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* FmdCandidates::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string base64EnrolledFMD = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_base64enrolledfmd();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "fingerprint.FmdCandidates.base64EnrolledFMD"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* FmdCandidates::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:fingerprint.FmdCandidates)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string base64EnrolledFMD = 1;
+  if (this->base64enrolledfmd().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_base64enrolledfmd().data(), static_cast<int>(this->_internal_base64enrolledfmd().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "fingerprint.FmdCandidates.base64EnrolledFMD");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_base64enrolledfmd(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:fingerprint.FmdCandidates)
+  return target;
+}
+
+size_t FmdCandidates::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:fingerprint.FmdCandidates)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string base64EnrolledFMD = 1;
+  if (this->base64enrolledfmd().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_base64enrolledfmd());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void FmdCandidates::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:fingerprint.FmdCandidates)
+  GOOGLE_DCHECK_NE(&from, this);
+  const FmdCandidates* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<FmdCandidates>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:fingerprint.FmdCandidates)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:fingerprint.FmdCandidates)
+    MergeFrom(*source);
+  }
+}
+
+void FmdCandidates::MergeFrom(const FmdCandidates& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:fingerprint.FmdCandidates)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.base64enrolledfmd().size() > 0) {
+    _internal_set_base64enrolledfmd(from._internal_base64enrolledfmd());
+  }
+}
+
+void FmdCandidates::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:fingerprint.FmdCandidates)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void FmdCandidates::CopyFrom(const FmdCandidates& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:fingerprint.FmdCandidates)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool FmdCandidates::IsInitialized() const {
+  return true;
+}
+
+void FmdCandidates::InternalSwap(FmdCandidates* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  base64enrolledfmd_.Swap(&other->base64enrolledfmd_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata FmdCandidates::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 class EnrollmentRequest::_Internal {
  public:
 };
@@ -865,12 +1071,16 @@ VerificationRequest::VerificationRequest(const VerificationRequest& from)
   } else {
     targetfmd_ = nullptr;
   }
+  dataformat_ = from.dataformat_;
   // @@protoc_insertion_point(copy_constructor:fingerprint.VerificationRequest)
 }
 
 void VerificationRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_VerificationRequest_fingerprint_2eproto.base);
-  targetfmd_ = nullptr;
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&targetfmd_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&dataformat_) -
+      reinterpret_cast<char*>(&targetfmd_)) + sizeof(dataformat_));
 }
 
 VerificationRequest::~VerificationRequest() {
@@ -910,6 +1120,7 @@ void VerificationRequest::Clear() {
     delete targetfmd_;
   }
   targetfmd_ = nullptr;
+  dataformat_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -927,7 +1138,7 @@ const char* VerificationRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAME
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // repeated .fingerprint.EnrolledFMD fmdCandidates = 2;
+      // repeated .fingerprint.FmdCandidates fmdCandidates = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           ptr -= 1;
@@ -937,6 +1148,13 @@ const char* VerificationRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAME
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // uint32 dataFormat = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          dataformat_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
         } else goto handle_unusual;
         continue;
       default: {
@@ -975,12 +1193,18 @@ failure:
         1, _Internal::targetfmd(this), target, stream);
   }
 
-  // repeated .fingerprint.EnrolledFMD fmdCandidates = 2;
+  // repeated .fingerprint.FmdCandidates fmdCandidates = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_fmdcandidates_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(2, this->_internal_fmdcandidates(i), target, stream);
+  }
+
+  // uint32 dataFormat = 3;
+  if (this->dataformat() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_dataformat(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -999,7 +1223,7 @@ size_t VerificationRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .fingerprint.EnrolledFMD fmdCandidates = 2;
+  // repeated .fingerprint.FmdCandidates fmdCandidates = 2;
   total_size += 1UL * this->_internal_fmdcandidates_size();
   for (const auto& msg : this->fmdcandidates_) {
     total_size +=
@@ -1011,6 +1235,13 @@ size_t VerificationRequest::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *targetfmd_);
+  }
+
+  // uint32 dataFormat = 3;
+  if (this->dataformat() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_dataformat());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1048,6 +1279,9 @@ void VerificationRequest::MergeFrom(const VerificationRequest& from) {
   if (from.has_targetfmd()) {
     _internal_mutable_targetfmd()->::fingerprint::PreEnrolledFMD::MergeFrom(from._internal_targetfmd());
   }
+  if (from.dataformat() != 0) {
+    _internal_set_dataformat(from._internal_dataformat());
+  }
 }
 
 void VerificationRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -1072,7 +1306,12 @@ void VerificationRequest::InternalSwap(VerificationRequest* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   fmdcandidates_.InternalSwap(&other->fmdcandidates_);
-  swap(targetfmd_, other->targetfmd_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(VerificationRequest, dataformat_)
+      + sizeof(VerificationRequest::dataformat_)
+      - PROTOBUF_FIELD_OFFSET(VerificationRequest, targetfmd_)>(
+          reinterpret_cast<char*>(&targetfmd_),
+          reinterpret_cast<char*>(&other->targetfmd_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata VerificationRequest::GetMetadata() const {
@@ -1095,12 +1334,17 @@ VerificationResponse::VerificationResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena
 VerificationResponse::VerificationResponse(const VerificationResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  match_ = from.match_;
+  ::memcpy(&match_, &from.match_,
+    static_cast<size_t>(reinterpret_cast<char*>(&fmdidx_) -
+    reinterpret_cast<char*>(&match_)) + sizeof(fmdidx_));
   // @@protoc_insertion_point(copy_constructor:fingerprint.VerificationResponse)
 }
 
 void VerificationResponse::SharedCtor() {
-  match_ = false;
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&match_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&fmdidx_) -
+      reinterpret_cast<char*>(&match_)) + sizeof(fmdidx_));
 }
 
 VerificationResponse::~VerificationResponse() {
@@ -1134,7 +1378,9 @@ void VerificationResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  match_ = false;
+  ::memset(&match_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&fmdidx_) -
+      reinterpret_cast<char*>(&match_)) + sizeof(fmdidx_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1149,6 +1395,13 @@ const char* VerificationResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAM
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           match_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 fmdIdx = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          fmdidx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1186,6 +1439,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_match(), target);
   }
 
+  // int32 fmdIdx = 2;
+  if (this->fmdidx() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_fmdidx(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1205,6 +1464,13 @@ size_t VerificationResponse::ByteSizeLong() const {
   // bool match = 1;
   if (this->match() != 0) {
     total_size += 1 + 1;
+  }
+
+  // int32 fmdIdx = 2;
+  if (this->fmdidx() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_fmdidx());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1241,6 +1507,9 @@ void VerificationResponse::MergeFrom(const VerificationResponse& from) {
   if (from.match() != 0) {
     _internal_set_match(from._internal_match());
   }
+  if (from.fmdidx() != 0) {
+    _internal_set_fmdidx(from._internal_fmdidx());
+  }
 }
 
 void VerificationResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -1264,202 +1533,15 @@ bool VerificationResponse::IsInitialized() const {
 void VerificationResponse::InternalSwap(VerificationResponse* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  swap(match_, other->match_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(VerificationResponse, fmdidx_)
+      + sizeof(VerificationResponse::fmdidx_)
+      - PROTOBUF_FIELD_OFFSET(VerificationResponse, match_)>(
+          reinterpret_cast<char*>(&match_),
+          reinterpret_cast<char*>(&other->match_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata VerificationResponse::GetMetadata() const {
-  return GetMetadataStatic();
-}
-
-
-// ===================================================================
-
-class CheckDuplicateResponse::_Internal {
- public:
-};
-
-CheckDuplicateResponse::CheckDuplicateResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:fingerprint.CheckDuplicateResponse)
-}
-CheckDuplicateResponse::CheckDuplicateResponse(const CheckDuplicateResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  isduplicate_ = from.isduplicate_;
-  // @@protoc_insertion_point(copy_constructor:fingerprint.CheckDuplicateResponse)
-}
-
-void CheckDuplicateResponse::SharedCtor() {
-  isduplicate_ = false;
-}
-
-CheckDuplicateResponse::~CheckDuplicateResponse() {
-  // @@protoc_insertion_point(destructor:fingerprint.CheckDuplicateResponse)
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-void CheckDuplicateResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-}
-
-void CheckDuplicateResponse::ArenaDtor(void* object) {
-  CheckDuplicateResponse* _this = reinterpret_cast< CheckDuplicateResponse* >(object);
-  (void)_this;
-}
-void CheckDuplicateResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void CheckDuplicateResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const CheckDuplicateResponse& CheckDuplicateResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CheckDuplicateResponse_fingerprint_2eproto.base);
-  return *internal_default_instance();
-}
-
-
-void CheckDuplicateResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:fingerprint.CheckDuplicateResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  isduplicate_ = false;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* CheckDuplicateResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
-    switch (tag >> 3) {
-      // bool isDuplicate = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          isduplicate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
-}
-
-::PROTOBUF_NAMESPACE_ID::uint8* CheckDuplicateResponse::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:fingerprint.CheckDuplicateResponse)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // bool isDuplicate = 1;
-  if (this->isduplicate() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_isduplicate(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:fingerprint.CheckDuplicateResponse)
-  return target;
-}
-
-size_t CheckDuplicateResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:fingerprint.CheckDuplicateResponse)
-  size_t total_size = 0;
-
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // bool isDuplicate = 1;
-  if (this->isduplicate() != 0) {
-    total_size += 1 + 1;
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void CheckDuplicateResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:fingerprint.CheckDuplicateResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const CheckDuplicateResponse* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CheckDuplicateResponse>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:fingerprint.CheckDuplicateResponse)
-    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:fingerprint.CheckDuplicateResponse)
-    MergeFrom(*source);
-  }
-}
-
-void CheckDuplicateResponse::MergeFrom(const CheckDuplicateResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:fingerprint.CheckDuplicateResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.isduplicate() != 0) {
-    _internal_set_isduplicate(from._internal_isduplicate());
-  }
-}
-
-void CheckDuplicateResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:fingerprint.CheckDuplicateResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void CheckDuplicateResponse::CopyFrom(const CheckDuplicateResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:fingerprint.CheckDuplicateResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool CheckDuplicateResponse::IsInitialized() const {
-  return true;
-}
-
-void CheckDuplicateResponse::InternalSwap(CheckDuplicateResponse* other) {
-  using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  swap(isduplicate_, other->isduplicate_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata CheckDuplicateResponse::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -1473,6 +1555,9 @@ template<> PROTOBUF_NOINLINE ::fingerprint::PreEnrolledFMD* Arena::CreateMaybeMe
 template<> PROTOBUF_NOINLINE ::fingerprint::EnrolledFMD* Arena::CreateMaybeMessage< ::fingerprint::EnrolledFMD >(Arena* arena) {
   return Arena::CreateMessageInternal< ::fingerprint::EnrolledFMD >(arena);
 }
+template<> PROTOBUF_NOINLINE ::fingerprint::FmdCandidates* Arena::CreateMaybeMessage< ::fingerprint::FmdCandidates >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::fingerprint::FmdCandidates >(arena);
+}
 template<> PROTOBUF_NOINLINE ::fingerprint::EnrollmentRequest* Arena::CreateMaybeMessage< ::fingerprint::EnrollmentRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::fingerprint::EnrollmentRequest >(arena);
 }
@@ -1481,9 +1566,6 @@ template<> PROTOBUF_NOINLINE ::fingerprint::VerificationRequest* Arena::CreateMa
 }
 template<> PROTOBUF_NOINLINE ::fingerprint::VerificationResponse* Arena::CreateMaybeMessage< ::fingerprint::VerificationResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::fingerprint::VerificationResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::fingerprint::CheckDuplicateResponse* Arena::CreateMaybeMessage< ::fingerprint::CheckDuplicateResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::fingerprint::CheckDuplicateResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

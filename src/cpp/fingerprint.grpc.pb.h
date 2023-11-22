@@ -59,13 +59,6 @@ class FingerPrint final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::VerificationResponse>> PrepareAsyncVerifyFingerprint(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::VerificationResponse>>(PrepareAsyncVerifyFingerprintRaw(context, request, cq));
     }
-    virtual ::grpc::Status CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::fingerprint::CheckDuplicateResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::CheckDuplicateResponse>> AsyncCheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::CheckDuplicateResponse>>(AsyncCheckDuplicateRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::CheckDuplicateResponse>> PrepareAsyncCheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::CheckDuplicateResponse>>(PrepareAsyncCheckDuplicateRaw(context, request, cq));
-    }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
@@ -81,12 +74,6 @@ class FingerPrint final {
       #else
       virtual void VerifyFingerprint(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::VerificationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     typedef class experimental_async_interface async_interface;
@@ -100,8 +87,6 @@ class FingerPrint final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::EnrolledFMD>* PrepareAsyncEnrollFingerprintRaw(::grpc::ClientContext* context, const ::fingerprint::EnrollmentRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::VerificationResponse>* AsyncVerifyFingerprintRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::VerificationResponse>* PrepareAsyncVerifyFingerprintRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::CheckDuplicateResponse>* AsyncCheckDuplicateRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::fingerprint::CheckDuplicateResponse>* PrepareAsyncCheckDuplicateRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -120,13 +105,6 @@ class FingerPrint final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::fingerprint::VerificationResponse>> PrepareAsyncVerifyFingerprint(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::fingerprint::VerificationResponse>>(PrepareAsyncVerifyFingerprintRaw(context, request, cq));
     }
-    ::grpc::Status CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::fingerprint::CheckDuplicateResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::fingerprint::CheckDuplicateResponse>> AsyncCheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::fingerprint::CheckDuplicateResponse>>(AsyncCheckDuplicateRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::fingerprint::CheckDuplicateResponse>> PrepareAsyncCheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::fingerprint::CheckDuplicateResponse>>(PrepareAsyncCheckDuplicateRaw(context, request, cq));
-    }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
@@ -141,12 +119,6 @@ class FingerPrint final {
       void VerifyFingerprint(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::VerificationResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
       void VerifyFingerprint(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::VerificationResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      void CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
      private:
       friend class Stub;
@@ -163,11 +135,8 @@ class FingerPrint final {
     ::grpc::ClientAsyncResponseReader< ::fingerprint::EnrolledFMD>* PrepareAsyncEnrollFingerprintRaw(::grpc::ClientContext* context, const ::fingerprint::EnrollmentRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::fingerprint::VerificationResponse>* AsyncVerifyFingerprintRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::fingerprint::VerificationResponse>* PrepareAsyncVerifyFingerprintRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::fingerprint::CheckDuplicateResponse>* AsyncCheckDuplicateRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::fingerprint::CheckDuplicateResponse>* PrepareAsyncCheckDuplicateRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_EnrollFingerprint_;
     const ::grpc::internal::RpcMethod rpcmethod_VerifyFingerprint_;
-    const ::grpc::internal::RpcMethod rpcmethod_CheckDuplicate_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -177,7 +146,6 @@ class FingerPrint final {
     virtual ~Service();
     virtual ::grpc::Status EnrollFingerprint(::grpc::ServerContext* context, const ::fingerprint::EnrollmentRequest* request, ::fingerprint::EnrolledFMD* response);
     virtual ::grpc::Status VerifyFingerprint(::grpc::ServerContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::VerificationResponse* response);
-    virtual ::grpc::Status CheckDuplicate(::grpc::ServerContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_EnrollFingerprint : public BaseClass {
@@ -219,27 +187,7 @@ class FingerPrint final {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  template <class BaseClass>
-  class WithAsyncMethod_CheckDuplicate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithAsyncMethod_CheckDuplicate() {
-      ::grpc::Service::MarkMethodAsync(2);
-    }
-    ~WithAsyncMethod_CheckDuplicate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CheckDuplicate(::grpc::ServerContext* /*context*/, const ::fingerprint::VerificationRequest* /*request*/, ::fingerprint::CheckDuplicateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestCheckDuplicate(::grpc::ServerContext* context, ::fingerprint::VerificationRequest* request, ::grpc::ServerAsyncResponseWriter< ::fingerprint::CheckDuplicateResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  typedef WithAsyncMethod_EnrollFingerprint<WithAsyncMethod_VerifyFingerprint<WithAsyncMethod_CheckDuplicate<Service > > > AsyncService;
+  typedef WithAsyncMethod_EnrollFingerprint<WithAsyncMethod_VerifyFingerprint<Service > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_EnrollFingerprint : public BaseClass {
    private:
@@ -334,58 +282,11 @@ class FingerPrint final {
     #endif
       { return nullptr; }
   };
-  template <class BaseClass>
-  class ExperimentalWithCallbackMethod_CheckDuplicate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithCallbackMethod_CheckDuplicate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::fingerprint::VerificationRequest, ::fingerprint::CheckDuplicateResponse>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response) { return this->CheckDuplicate(context, request, response); }));}
-    void SetMessageAllocatorFor_CheckDuplicate(
-        ::grpc::experimental::MessageAllocator< ::fingerprint::VerificationRequest, ::fingerprint::CheckDuplicateResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
-    #endif
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::fingerprint::VerificationRequest, ::fingerprint::CheckDuplicateResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~ExperimentalWithCallbackMethod_CheckDuplicate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CheckDuplicate(::grpc::ServerContext* /*context*/, const ::fingerprint::VerificationRequest* /*request*/, ::fingerprint::CheckDuplicateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* CheckDuplicate(
-      ::grpc::CallbackServerContext* /*context*/, const ::fingerprint::VerificationRequest* /*request*/, ::fingerprint::CheckDuplicateResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* CheckDuplicate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::fingerprint::VerificationRequest* /*request*/, ::fingerprint::CheckDuplicateResponse* /*response*/)
-    #endif
-      { return nullptr; }
-  };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_EnrollFingerprint<ExperimentalWithCallbackMethod_VerifyFingerprint<ExperimentalWithCallbackMethod_CheckDuplicate<Service > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_EnrollFingerprint<ExperimentalWithCallbackMethod_VerifyFingerprint<Service > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_EnrollFingerprint<ExperimentalWithCallbackMethod_VerifyFingerprint<ExperimentalWithCallbackMethod_CheckDuplicate<Service > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_EnrollFingerprint<ExperimentalWithCallbackMethod_VerifyFingerprint<Service > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_EnrollFingerprint : public BaseClass {
    private:
@@ -416,23 +317,6 @@ class FingerPrint final {
     }
     // disable synchronous version of this method
     ::grpc::Status VerifyFingerprint(::grpc::ServerContext* /*context*/, const ::fingerprint::VerificationRequest* /*request*/, ::fingerprint::VerificationResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithGenericMethod_CheckDuplicate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithGenericMethod_CheckDuplicate() {
-      ::grpc::Service::MarkMethodGeneric(2);
-    }
-    ~WithGenericMethod_CheckDuplicate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CheckDuplicate(::grpc::ServerContext* /*context*/, const ::fingerprint::VerificationRequest* /*request*/, ::fingerprint::CheckDuplicateResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -475,26 +359,6 @@ class FingerPrint final {
     }
     void RequestVerifyFingerprint(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_CheckDuplicate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_CheckDuplicate() {
-      ::grpc::Service::MarkMethodRaw(2);
-    }
-    ~WithRawMethod_CheckDuplicate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CheckDuplicate(::grpc::ServerContext* /*context*/, const ::fingerprint::VerificationRequest* /*request*/, ::fingerprint::CheckDuplicateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestCheckDuplicate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -574,44 +438,6 @@ class FingerPrint final {
       { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_CheckDuplicate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithRawCallbackMethod_CheckDuplicate() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->CheckDuplicate(context, request, response); }));
-    }
-    ~ExperimentalWithRawCallbackMethod_CheckDuplicate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status CheckDuplicate(::grpc::ServerContext* /*context*/, const ::fingerprint::VerificationRequest* /*request*/, ::fingerprint::CheckDuplicateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* CheckDuplicate(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* CheckDuplicate(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
   class WithStreamedUnaryMethod_EnrollFingerprint : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -665,36 +491,9 @@ class FingerPrint final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedVerifyFingerprint(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::fingerprint::VerificationRequest,::fingerprint::VerificationResponse>* server_unary_streamer) = 0;
   };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_CheckDuplicate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_CheckDuplicate() {
-      ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::fingerprint::VerificationRequest, ::fingerprint::CheckDuplicateResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::fingerprint::VerificationRequest, ::fingerprint::CheckDuplicateResponse>* streamer) {
-                       return this->StreamedCheckDuplicate(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_CheckDuplicate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status CheckDuplicate(::grpc::ServerContext* /*context*/, const ::fingerprint::VerificationRequest* /*request*/, ::fingerprint::CheckDuplicateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedCheckDuplicate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::fingerprint::VerificationRequest,::fingerprint::CheckDuplicateResponse>* server_unary_streamer) = 0;
-  };
-  typedef WithStreamedUnaryMethod_EnrollFingerprint<WithStreamedUnaryMethod_VerifyFingerprint<WithStreamedUnaryMethod_CheckDuplicate<Service > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_EnrollFingerprint<WithStreamedUnaryMethod_VerifyFingerprint<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_EnrollFingerprint<WithStreamedUnaryMethod_VerifyFingerprint<WithStreamedUnaryMethod_CheckDuplicate<Service > > > StreamedService;
+  typedef WithStreamedUnaryMethod_EnrollFingerprint<WithStreamedUnaryMethod_VerifyFingerprint<Service > > StreamedService;
 };
 
 }  // namespace fingerprint

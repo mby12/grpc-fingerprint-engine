@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  grpc-test: 
+    build: .
+    image: test-grpc-custom:0.1
+    ports:
+      - 4000:4134

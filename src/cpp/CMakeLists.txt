@@ -51,8 +51,8 @@ include_directories("${CMAKE_CURRENT_BINARY_DIR}")
 # Include *.h files
 include_directories("${CMAKE_SOURCE_DIR}")
 
-set(my_base_64_src "${CMAKE_SOURCE_DIR}/base64.h")
-set(my_base64_hdr "${CMAKE_SOURCE_DIR}/base64.cc")
+set(my_base_64_src "${CMAKE_SOURCE_DIR}/base642.h")
+set(my_base64_hdr "${CMAKE_SOURCE_DIR}/base642.cpp")
 
 # fingerprint_grpc_proto
 add_library(fingerprint_grpc_proto
@@ -71,7 +71,7 @@ add_library(dp_fingerprint_engine STATIC IMPORTED)
 set_property(TARGET dp_fingerprint_engine PROPERTY IMPORTED_LOCATION "/lib/libdpfj.so")
 
 # base64 include
-add_library(my_base64 ${my_base_64_src} ${my_base64_hdr})
+add_library(my_base642 ${my_base_64_src} ${my_base64_hdr})
 
 # Targets fingerprint_(client|server)
 foreach(_target fingerprint_server)
@@ -80,7 +80,7 @@ foreach(_target fingerprint_server)
   target_link_libraries(${_target}
     fingerprint_grpc_proto
     dp_fingerprint_engine
-    my_base64
+    my_base642
     ${_REFLECTION}
     ${_GRPC_GRPCPP}
     ${_PROTOBUF_LIBPROTOBUF})

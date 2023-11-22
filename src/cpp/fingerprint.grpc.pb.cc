@@ -24,7 +24,6 @@ namespace fingerprint {
 static const char* FingerPrint_method_names[] = {
   "/fingerprint.FingerPrint/EnrollFingerprint",
   "/fingerprint.FingerPrint/VerifyFingerprint",
-  "/fingerprint.FingerPrint/CheckDuplicate",
 };
 
 std::unique_ptr< FingerPrint::Stub> FingerPrint::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -36,7 +35,6 @@ std::unique_ptr< FingerPrint::Stub> FingerPrint::NewStub(const std::shared_ptr< 
 FingerPrint::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_EnrollFingerprint_(FingerPrint_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_VerifyFingerprint_(FingerPrint_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_CheckDuplicate_(FingerPrint_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status FingerPrint::Stub::EnrollFingerprint(::grpc::ClientContext* context, const ::fingerprint::EnrollmentRequest& request, ::fingerprint::EnrolledFMD* response) {
@@ -85,29 +83,6 @@ void FingerPrint::Stub::experimental_async::VerifyFingerprint(::grpc::ClientCont
   return result;
 }
 
-::grpc::Status FingerPrint::Stub::CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::fingerprint::CheckDuplicateResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::fingerprint::VerificationRequest, ::fingerprint::CheckDuplicateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_CheckDuplicate_, context, request, response);
-}
-
-void FingerPrint::Stub::experimental_async::CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::fingerprint::VerificationRequest, ::fingerprint::CheckDuplicateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_CheckDuplicate_, context, request, response, std::move(f));
-}
-
-void FingerPrint::Stub::experimental_async::CheckDuplicate(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_CheckDuplicate_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::fingerprint::CheckDuplicateResponse>* FingerPrint::Stub::PrepareAsyncCheckDuplicateRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::fingerprint::CheckDuplicateResponse, ::fingerprint::VerificationRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_CheckDuplicate_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::fingerprint::CheckDuplicateResponse>* FingerPrint::Stub::AsyncCheckDuplicateRaw(::grpc::ClientContext* context, const ::fingerprint::VerificationRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncCheckDuplicateRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
 FingerPrint::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       FingerPrint_method_names[0],
@@ -129,16 +104,6 @@ FingerPrint::Service::Service() {
              ::fingerprint::VerificationResponse* resp) {
                return service->VerifyFingerprint(ctx, req, resp);
              }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      FingerPrint_method_names[2],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< FingerPrint::Service, ::fingerprint::VerificationRequest, ::fingerprint::CheckDuplicateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](FingerPrint::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::fingerprint::VerificationRequest* req,
-             ::fingerprint::CheckDuplicateResponse* resp) {
-               return service->CheckDuplicate(ctx, req, resp);
-             }, this)));
 }
 
 FingerPrint::Service::~Service() {
@@ -152,13 +117,6 @@ FingerPrint::Service::~Service() {
 }
 
 ::grpc::Status FingerPrint::Service::VerifyFingerprint(::grpc::ServerContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::VerificationResponse* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status FingerPrint::Service::CheckDuplicate(::grpc::ServerContext* context, const ::fingerprint::VerificationRequest* request, ::fingerprint::CheckDuplicateResponse* response) {
   (void) context;
   (void) request;
   (void) response;

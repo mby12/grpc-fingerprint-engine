@@ -59,7 +59,7 @@ typedef unsigned int MyFMDSize;
 class FingerPrintImpl final : public FingerPrint::Service
 {
 private:
-    unsigned int threshold_score = DPFJ_PROBABILITY_ONE / 100000;
+    unsigned int threshold_score = DPFJ_PROBABILITY_ONE / 1000000;
 
 public:
     Status EnrollFingerprint(ServerContext *context, const EnrollmentRequest *enrollmentRequest, EnrolledFMD *enrolledFMD)
@@ -168,75 +168,59 @@ public:
 
     Status VerifyFingerprint(ServerContext *context, const VerificationRequest *verification_request, VerificationResponse *verification_response)
     {
-        cout << "Start Matching ..." << endl;
-        VerificationResponse *response = makeVerification(verification_request);
-        verification_response->set_fmdidx(response->fmdidx());
-        verification_response->set_match(response->match());
+        verification_response->set_match(makeVerification(verification_request)->match());
         return Status::OK;
     }
 
     VerificationResponse *makeVerification(const VerificationRequest *verification_request)
     {
 
+        string target_pre_fmd = base64_decode(verification_request->targetfmd().base64preenrolledfmd());
+        MyFMD *target_pre_fmd_ptr = (MyFMD *)target_pre_fmd.c_str();
+
+        map<MyFMD *, MyFMDSize *> target_verify_fmd_map = convert_fmd(DPFJ_FMD_DP_PRE_REG_FEATURES, DPFJ_FMD_DP_VER_FEATURES, target_pre_fmd_ptr, (MyFMDSize)target_pre_fmd.size());
+
+        map<MyFMD *, MyFMDSize *>::iterator target_verify_fmd_map_it = target_verify_fmd_map.begin();
+
+        MyFMD *target_verify_fmd_ptr = target_verify_fmd_map_it->first;
+        MyFMDSize *target_verify_fmd_size = target_verify_fmd_map_it->second;
+
+        int candidates_count = verification_request->fmdcandidates_size();
+
+        string candidates_container[candidates_count];
+        MyFMD *candidates_pointers_container[candidates_count];
+        MyFMDSize candidates_size_container[candidates_count];
+
+        DPFJ_CANDIDATE matched_candidates_container[1];
+        MyFMDSize expected_matches_count = 1;
+
+        int counter = 0;
+
+        for (FmdCandidates enrolled_candidate : verification_request->fmdcandidates())
+        {
+
+            string candidate_reg_fmd = base64_decode(enrolled_candidate.base64enrolledfmd());
+            candidates_container[counter] = candidate_reg_fmd;
+            candidates_size_container[counter] = candidate_reg_fmd.size();
+            candidates_pointers_container[counter] = (MyFMD *)candidates_container[counter].c_str();
+            counter++;
+        }
+
+        int identify_result = dpfj_identify(DPFJ_FMD_DP_VER_FEATURES, target_verify_fmd_ptr, *target_verify_fmd_size, 0, DPFJ_FMD_ANSI_378_2004, candidates_count, candidates_pointers_container, candidates_size_container, threshold_score, &expected_matches_count, matched_candidates_container);
+
         VerificationResponse *verification_response = new VerificationResponse();
         verification_response->set_match(false);
-        try
+
+        if (identify_result == DPFJ_SUCCESS && expected_matches_count > 0)
         {
-            cout << "Decoding PreEnrolled Base64 ..." << endl;
-            string target_pre_fmd = base64_decode(verification_request->targetfmd().base64preenrolledfmd());
-            MyFMD *target_pre_fmd_ptr = (MyFMD *)target_pre_fmd.c_str();
-
-            map<MyFMD *, MyFMDSize *> target_verify_fmd_map = convert_fmd(DPFJ_FMD_DP_PRE_REG_FEATURES, DPFJ_FMD_DP_VER_FEATURES, target_pre_fmd_ptr, (MyFMDSize)target_pre_fmd.size());
-
-            map<MyFMD *, MyFMDSize *>::iterator target_verify_fmd_map_it = target_verify_fmd_map.begin();
-
-            MyFMD *target_verify_fmd_ptr = target_verify_fmd_map_it->first;
-            MyFMDSize *target_verify_fmd_size = target_verify_fmd_map_it->second;
-
-            int candidates_count = verification_request->fmdcandidates_size();
-
-            string candidates_container[candidates_count];
-            MyFMD *candidates_pointers_container[candidates_count];
-            MyFMDSize candidates_size_container[candidates_count];
-
-            DPFJ_CANDIDATE matched_candidates_container[1];
-            MyFMDSize expected_matches_count = 1;
-
-            int counter = 0;
-
-            cout << "Processing " << candidates_count << " Candidates ..." << endl;
-            for (FmdCandidates enrolled_candidate : verification_request->fmdcandidates())
-            {
-                string candidate_reg_fmd = base64_decode(enrolled_candidate.base64enrolledfmd());
-                candidates_container[counter] = candidate_reg_fmd;
-                candidates_size_container[counter] = candidate_reg_fmd.size();
-                candidates_pointers_container[counter] = (MyFMD *)candidates_container[counter].c_str();
-                counter++;
-            }
-
-            cout << "Identifying ..." << endl;
-
-            int identify_result = dpfj_identify(DPFJ_FMD_DP_VER_FEATURES, target_verify_fmd_ptr, *target_verify_fmd_size, 0, verification_request->dataformat(), candidates_count, candidates_pointers_container, candidates_size_container, threshold_score, &expected_matches_count, matched_candidates_container);
-
-            cout << "Result Identify " << identify_result << ", Match Count: " << expected_matches_count << " - " << matched_candidates_container->fmd_idx << " - " << matched_candidates_container->size << " - " << matched_candidates_container->view_idx << endl;
-
-            if (identify_result == DPFJ_SUCCESS && expected_matches_count > 0)
-            {
-                cout << expected_matches_count << " match found... " << endl;
-                verification_response->set_fmdidx(matched_candidates_container->fmd_idx);
-                verification_response->set_match(true);
-                return verification_response;
-            }
-
-            else
-            {
-                cout << "No match found..." << endl;
-                return verification_response;
-            }
+            cout << expected_matches_count << " match found..." << endl;
+            verification_response->set_match(true);
+            return verification_response;
         }
-        catch (const std::exception &e)
+
+        else
         {
-            std::cerr << e.what() << '\n';
+            cout << "No match found..." << endl;
             return verification_response;
         }
     }

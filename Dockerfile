@@ -29,6 +29,7 @@ COPY --from=stage1 /opt /opt
 COPY --from=stage1 /temp/lib /lib
 
 WORKDIR /app
+COPY --from=stage1 /app/src/cpp ./src
 COPY --from=stage1 /app/src/cpp/build/fingerprint_server .
 
 ENTRYPOINT [ "fingerprint_server" ]
